@@ -1,39 +1,40 @@
-import withLayout from '../components/Layout';
-import Link from 'next/link';
+import { withApollo } from '../apollo/client'
+import withLayout from '../components/Layout'
+import gql from 'graphql-tag'
+import Link from 'next/link'
+import { useQuery } from '@apollo/react-hooks'
+import { useRouter } from 'next/router'
 
-import { gql } from "apollo-boost";
-import { useQuery } from '@apollo/react-hooks';
-
-const PostLink = props => (
-    <li>
-        <Link href="/p/[id]" as={`/p/${props.id}`}>
-            <a>{props.id}</a>
-        </Link>
-    </li>
-);
-
-const Page = () => {
-
-    const EXCHANGE_RATES = gql`
-    {
-        books {
-            title
-            author
-        }
+const ViewerQuery = gql`
+  query ViewerQuery {
+    viewer {
+      id
+      email
     }
-    `;
+  }
+`
 
-    const { loading, error, data } = useQuery(EXCHANGE_RATES);
+const Index = () => {
+  const router = useRouter()
+  const { data, loading } = useQuery(ViewerQuery)
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
+  // // Auth check
+  // if (
+  //   loading === false &&
+  //   data.viewer === null &&
+  //   typeof window !== 'undefined'
+  // ) {
+  //   router.push('/signin')
+  // }
 
-    return data.books.map(({ title, author }) => (
-        <div key={title}>
-            {/* {title}: {author} */}
-            <PostLink id={title} />
-        </div>
-    ));
-};
+  //if (data && data.viewer) {
+    return (
+      <div>
+      </div>
+    )
+  //}
 
-export default withLayout(Page);
+  return <p>Loading...</p>
+}
+
+export default withApollo(withLayout(Index))
