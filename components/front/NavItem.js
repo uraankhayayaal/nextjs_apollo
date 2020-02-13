@@ -15,10 +15,8 @@ const NavItem = (props) => {
                     color:white;
                     display:inline-block;
                     padding: 8px 16px;
-                    text-decoration: none;
                     font-size: 16px;
                     font-weight: bold;
-                    font-family: Roboto, Helvetica, "Open Suns";
                 }
                 li a.accent{
                     color:#729C92;
