@@ -7,8 +7,8 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     volumes:
-      - ./.db/data:/var/lib/mysql
-      - ./.db/dump:/docker-entrypoint-initdb.d/
+      - ./server/.db/data:/var/lib/mysql
+      - ./server/.db/dump:/docker-entrypoint-initdb.d/
     environment:
       MYSQL_ROOT_PASSWORD: 1
       MYSQL_USER: sequelize_user

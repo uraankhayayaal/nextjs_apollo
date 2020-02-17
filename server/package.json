@@ -1,0 +1,18 @@
+{
+    "name": "nextjsapollo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start"
+    },
+    "author": "Ayaal Kaplin",
+    "license": "ISC",
+    "dependencies": {
+        "apollo-server": "^2.10.1",
+        "graphql": "^14.6.0",
+        "sequelize": "^5.21.4"
+    }
+}
