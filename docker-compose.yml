@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: sequelize-db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./.db/data:/var/lib/mysql
+      - ./.db/dump:/docker-entrypoint-initdb.d/
+    environment:
+      MYSQL_ROOT_PASSWORD: 1
+      MYSQL_USER: sequelize_user
+      MYSQL_PASSWORD: sequelize_password
+      MYSQL_DATABASE: sequelize_database
+    ports:
+      - 3309:3306
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
