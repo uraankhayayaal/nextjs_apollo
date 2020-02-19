@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useQuery } from '@apollo/react-hooks'
 import { useRouter } from 'next/router'
 
-const ViewerQuery = gql`
+const booksQuery = gql`
   query{
     books{
       title
@@ -16,14 +16,14 @@ const ViewerQuery = gql`
 
 const Index = () => {
   const router = useRouter()
-  const { data, loading } = useQuery(ViewerQuery, {
+  const { data, loading } = useQuery(booksQuery, {
     variables: { page: 0 }
   })
 
   if (data) {
     return (
       <div>
-        <p>Фнффд</p>
+        <p>Книги</p>
         {data.books.map((book, i) => {     
            console.log("Entered");                 
            // Return the element. Also pass key     
