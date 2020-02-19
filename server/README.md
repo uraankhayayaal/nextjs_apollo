@@ -1,0 +1,6 @@
+USAGE
+=====
+
+```
+node index.js
+```
