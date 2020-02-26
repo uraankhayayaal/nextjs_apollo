@@ -2,17 +2,29 @@
     "name": "nextjsapollo",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
     "scripts": {
         "dev": "next",
         "build": "next build",
-        "start": "next start"
+        "start": "ts-node src/index.ts"
     },
     "author": "Ayaal Kaplin",
     "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^13.7.2",
+        "ts-node": "3.3.0",
+        "typescript": "3.3.3333"
+    },
     "dependencies": {
+        "@types/node": "^13.7.2",
         "apollo-server": "^2.10.1",
+        "apollo-server-express": "^2.10.1",
+        "express": "^4.17.1",
         "graphql": "^14.6.0",
+        "mysql": "^2.18.1",
+        "reflect-metadata": "^0.1.13",
+        "typeorm": "^0.2.22"
+    },
+    "@comment dependencies": {
         "sequelize": "^5.21.4"
     }
 }
