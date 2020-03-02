@@ -24,3 +24,13 @@ creation
 ```
 ts-node ./node_modules/.bin/typeorm migration:generate -n someMigrationName
 ```
+
+start migration
+```
+./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run
+```
+
+revert migration
+```
+./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert
+```

@@ -3,20 +3,25 @@ import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
   type Query {
-    getUser(id: Int!): User,
-    books: [Book]
+    article(id: Int!): Article!
+    articles: [Article!]!
   }
+
   type Mutation {
-    addUser(firstName: String!, lastName: String, age: Int!): Boolean!
+    createArticle(title: String!, content: String!, photo: String!, is_publish: Boolean!, status: Int!, created_at: Int!, updated_at: Int!): Article!
+    updateArticle(id: Int!, title: String, content: String, photo: String, is_publish: Boolean, status: Int, updated_at: Int!): Boolean
+    deleteArticle(id: Int!): Boolean
   }
-  type User {
+
+  type Article {
     id: Int!
-    firstName: String!
-    lastName: String!
-    age: Int!
-  }
-  type Book {
     title: String!
-    author: String!
+    content: String!
+    photo: String!
+    is_publish: Boolean!
+    status: Int!
+    created_at: Int!
+    updated_at: Int!
   }
+
 `;

@@ -5,7 +5,7 @@
    "username": "root",
    "password": "5548",
    "database": "test",
-   "synchronize": false,
+   "synchronize": true,
    "logging": false,
    "entities": [
       "src/entity/**/*.ts"

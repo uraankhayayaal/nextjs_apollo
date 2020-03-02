@@ -1,42 +1,35 @@
-import { User } from "./entity/User";
 
-const books = [
-    {
-      title: 'Harry Potter and the Chamber of Secrets',
-      author: 'J.K. Rowling',
-    },
-    {
-      title: 'Jurassic Park',
-      author: 'Michael Crichton',
-    },
-];
+import { Article } from "./entity/Article";
+import { ResolverMap } from "./types/ResolverType";
 
 // Provide resolver functions for your schema fields
-export const resolvers = {
+export const resolvers: ResolverMap = {
   Query: {
-      books: () => books
-//    getUser: async (_: any, args: any) => {
-//      const { id } = args;
-
-//      return await User.findOne({ where: { id: id } });
-//    }
-  },
+    // стандартные поля (parent, args, context, info) 
+    article: (_, { id }) => Article.findOne({ where: { id: id } }),
+    articles: () => Article.find()
+  },  
   Mutation: {
-//    addUser: async (_: any, args: any) => {
-//      const { firstName, lastName, age } = args;
-//      try {
-//        const user = User.create({
-//          firstName,
-//          lastName,
-//          age
-//        });
-//
-//        await user.save();
-//
-//        return true;
-//      } catch (error) {
-//        return false;
-//      }
-//    }
+    createArticle: (_, args) => Article.create(args).save(),
+    updateArticle: (_, { id, ...args }) => {
+      try {
+        Article.update(id, args)
+      } catch(err) {
+        console.log(err);
+        return false;
+      }
+
+      return true;
+    },
+    deleteArticle: (_, { id }) => {
+      try {
+        Article.remove(id)
+      } catch(err) {
+        console.log(err);
+        return false;
+      }
+
+      return true;
+    },
   }
 };
