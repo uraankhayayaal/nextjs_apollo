@@ -23,7 +23,7 @@
     "graphql": "^14.6.0",
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.22"
+    "typeorm": "^0.2.25"
   },
   "@comment dependencies": {
     "sequelize": "^5.21.4"
